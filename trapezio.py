@@ -11,6 +11,9 @@ class AreaTrapezio(MovingCameraScene):
         ponto3 = np.array([-2, 0, 0])
         ponto4 = np.array([4, 0, 0])
         ponto5 = np.array([-1, 0, 0])
+        ponto6 = np.array([2, 0, 0])
+        ponto7 = np.array([-2.2, 2, 0])
+        ponto8 = np.array([-2.2, 0, 0])
 
         label_trapezio = MathTex(r'Trapezio')
         label_trapezio.shift(3.2*UP + 0.5*RIGHT)
@@ -77,5 +80,68 @@ class AreaTrapezio(MovingCameraScene):
         soma_areas.shift(2.7*DOWN + 0.5*RIGHT)
 
         self.play(FadeIn(area_trapezio), FadeIn(soma_areas))
+
+        self.wait(2)
+
+        self.play(self.camera.frame.animate.shift(2.5*RIGHT))
+
+        self.wait(2)
+
+        altura_2 = Line(ponto2, ponto6)
+        label_altura2 = MathTex(r'h')
+        label_altura2.shift(1*UP + 2.4*RIGHT)
+
+        altura_3 = Line(ponto7, ponto8)
+        label_altura3 = MathTex(r'h')
+        label_altura3.shift(1*UP + 2.6*LEFT)
+
+        self.play(Create(altura_2), Create(altura_3), FadeIn(label_altura2), FadeIn(label_altura3)) 
+        self.bring_to_back(altura_2)
+
+        self.wait(2)
+
+        label_at1 = MathTex(r'AreaT1:')
+        label_at1.shift(2.5*UP + 7.5*RIGHT)
+
+        area_t1 = MathTex(r'\frac{b_{baseMenor} \cdot h}{2}')
+        area_t1.shift(1.5*UP + 7.5*RIGHT)
+
+        self.play(FadeIn(label_at1), FadeIn(area_t1))
+
+        self.wait(2)
+
+        label_at2 = MathTex(r'AreaT2:')
+        label_at2.shift(7.5*RIGHT)
+
+        area_t2 = MathTex(r'\frac{B_{baseMaior} \cdot h}{2}')
+        area_t2.shift(1*DOWN + 7.5*RIGHT)
+
+        self.play(FadeIn(label_at2), FadeIn(area_t2))
+
+        self.wait(2)
+
+        self.play(FadeOut(soma_areas))
+
+        mais = MathTex(r'+')
+        mais.shift(3*DOWN + 0.5*RIGHT)
+
+        self.play(area_t1.animate.shift(4.5*DOWN + 9*LEFT), FadeIn(mais), area_t2.animate.shift(2*DOWN + 5*LEFT))
+
+        self.play(FadeOut(label_at1), FadeOut(label_at2))
+
+        self.wait(2)
+
+        self.play(self.camera.frame.animate.shift(2.5*LEFT))
+
+        grupo_soma_areas = VGroup()
+        grupo_soma_areas.add(area_t1, area_t2)
+        self.play(FadeIn(grupo_soma_areas))
+
+        self.wait(2)
+
+        area_trapezio = MathTex(r'\frac {(B_{baseMaior} + b_{base_Menor}) \cdot h}{2}')
+        area_trapezio.shift(3*DOWN + 0.5*RIGHT)
+
+        self.play(Transform(grupo_soma_areas, area_trapezio), FadeOut(mais))
 
         self.wait(2)
