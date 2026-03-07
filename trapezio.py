@@ -5,7 +5,6 @@ class AreaTrapezio(MovingCameraScene):
     def construct(self):
 
         grupo_trapezio1 = VGroup()
-        
         ponto1 = np.array([-1, 2, 0])
         ponto2 = np.array([2, 2, 0])
         ponto3 = np.array([-2, 0, 0])
