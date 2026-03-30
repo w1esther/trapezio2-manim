@@ -14,7 +14,7 @@ class AreaTrapezio(MovingCameraScene):
         ponto7 = np.array([-2.2, 2, 0])
         ponto8 = np.array([-2.2, 0, 0])
 
-        label_trapezio = MathTex(r'Trapezio')
+        label_trapezio = Text('Trapézio').scale(0.7)
         label_trapezio.shift(3.2*UP + 0.5*RIGHT)
 
         trapezio = Polygon(ponto1, ponto2, ponto4, ponto3, color=PINK)
@@ -72,7 +72,7 @@ class AreaTrapezio(MovingCameraScene):
 
         self.wait(2)
 
-        area_trapezio = MathTex(r'AreaTrapezio')
+        area_trapezio = Text('Área Trapézio').scale(0.7)
         area_trapezio.shift(1.7*DOWN + 0.5*RIGHT)
 
         soma_areas = MathTex(r'A_{T1} + A_{T2}')
@@ -99,7 +99,7 @@ class AreaTrapezio(MovingCameraScene):
 
         self.wait(2)
 
-        label_at1 = MathTex(r'AreaT1:')
+        label_at1 = Text('Área T1:').scale(0.7)
         label_at1.shift(2.5*UP + 7.5*RIGHT)
 
         area_t1 = MathTex(r'\frac{b_{baseMenor} \cdot h}{2}')
@@ -109,7 +109,7 @@ class AreaTrapezio(MovingCameraScene):
 
         self.wait(2)
 
-        label_at2 = MathTex(r'AreaT2:')
+        label_at2 = Text('Área T2:').scale(0.7)
         label_at2.shift(7.5*RIGHT)
 
         area_t2 = MathTex(r'\frac{B_{baseMaior} \cdot h}{2}')
